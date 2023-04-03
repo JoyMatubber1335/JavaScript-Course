@@ -1,0 +1,10 @@
+let markeWeight =78;
+let markeHeight =1.69;
+let johnWeight=92;
+let johnHeight =1.95;
+const marksBmi=markeWeight/markeHeight**2;
+const johnBmi=johnWeight/johnHeight**2;
+console.log(marksBmi);
+console.log(johnBmi);
+const markHaireBmi =marksBmi>johnBmi;
+console.log(markHaireBmi);
