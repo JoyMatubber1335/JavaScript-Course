@@ -81,3 +81,21 @@ for(let i=0;i<checkmax.length;i++)
     } 
 }
 console.log(ma);
+
+// object
+ 
+
+const Info={
+    firstName: "joy",
+    lastName: "matubber",
+    age :23,
+    job:"trainee"
+
+};
+
+// console.log(Info['job']);
+// const key=prompt("enter a key that you can intrest");
+// console.log(Info[key]);
+
+Info['location']='Dhaka';
+console.log(Info);
