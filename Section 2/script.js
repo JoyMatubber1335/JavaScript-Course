@@ -88,14 +88,33 @@ console.log(ma);
 const Info={
     firstName: "joy",
     lastName: "matubber",
-    age :23,
-    job:"trainee"
+    job:"trainee",
+    hasAdult:true,
+    age:13,
+   Ans: function()  // function in object  use this keyword to access the own property 
+   {
+    if(this.age>18 && this.hasAdult) return `joy is ${this.age} yers old and a engineer`;
+    else return `joy is ${this.age} yers old and not  engineer`;
+   },
+   Ans2:function(cgpa)
+   {
+     return cgpa;
+   }
+
 
 };
 
 // console.log(Info['job']);
 // const key=prompt("enter a key that you can intrest");
 // console.log(Info[key]);
-
+console.log(Info.Ans2(3.97));
+console.log(Info['Ans2'](4));
+console.log(Info.Ans());
 Info['location']='Dhaka';
 console.log(Info);
+
+// object methode
+
+
+
+
