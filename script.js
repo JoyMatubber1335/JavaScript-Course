@@ -3,8 +3,7 @@
 //    if(js==="joy")
 //    {
 //     //  alert("fun")
-//    }
-     console.log(45+45)
+//   
      //data type
 
      let firstName ="Joy";
