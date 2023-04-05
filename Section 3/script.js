@@ -10,15 +10,17 @@
 //MDN web Docs
 
 // test
- 
 
 const x = 23;
 if (x == 1) console.log("oj");
 console.log("gdgfdgfgf");
 console.log();
 
-
-const valu=prompt("enter a value");
-const ans=valu+10;
+const valu = prompt("enter a value");
+const ans = valu + 10;
 console.table(valu);
 console.log(ans);
+
+console.log("hello");
+console.log('');
+console.log();
