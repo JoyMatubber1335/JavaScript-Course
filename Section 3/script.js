@@ -9,6 +9,9 @@
 // devoloper mozila .org
 //MDN web Docs
 
+// test
+ 
+
 const x = 23;
 if (x == 1) console.log("oj");
 console.log("gdgfdgfgf");
