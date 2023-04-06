@@ -58,14 +58,16 @@ btnNew.addEventListener('click', function () {
   yourScore = 0;
 });
 
-btnHold.addEventListener('click', function () {
+const holdBtn = function () {
   if (playerChange === Current0) {
     Player1();
   } else {
     Player2();
   }
   //   myScore = 0;
-});
+}
+
+btnHold.addEventListener('click', holdBtn);
 
 const Player1 = function () {
   myScore += currentValue;
@@ -80,11 +82,16 @@ const Player2 = function () {
   playerChange.textContent = 0;
 };
 
-const newGame = funcrion();
-{
+const newGame = function () {// exp function
+  
   dice.classList.add('hidden');
   score0.textContent = 0;
   score1.textContent = 0;
   Current0.textContent = 0;
   Current1.textContent = 0;
+};
+
+function fun() { // REGULAR 
+  console.log('ok');
 }
+fun();
