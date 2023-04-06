@@ -36,8 +36,8 @@ btnRoll.addEventListener('click', function () {
     playerChange.textContent = currentValue;
   } else {
     currentValue = 0;
-    backColor0.classList.toggle('player--active');
     backColor1.classList.toggle('player--active');
+    backColor0.classList.toggle('player--active');
     playerChange.textContent = 0;
     if (playerChange === Current0) {
       playerChange = Current1;
@@ -56,7 +56,6 @@ btnNew.addEventListener('click', function () {
   scoreChange.textContent = 0;
   myScore = 0;
   yourScore = 0;
-  
 });
 
 btnHold.addEventListener('click', function () {
@@ -73,12 +72,19 @@ const Player1 = function () {
   scoreChange.textContent = myScore;
   currentValue = 0;
   playerChange.textContent = 0;
-  
 };
 const Player2 = function () {
   yourScore += currentValue;
   scoreChange.textContent = yourScore;
   currentValue = 0;
   playerChange.textContent = 0;
-
 };
+
+const newGame = funcrion();
+{
+  dice.classList.add('hidden');
+  score0.textContent = 0;
+  score1.textContent = 0;
+  Current0.textContent = 0;
+  Current1.textContent = 0;
+}
