@@ -65,7 +65,7 @@ const holdBtn = function () {
     Player2();
   }
   //   myScore = 0;
-}
+};
 
 btnHold.addEventListener('click', holdBtn);
 
@@ -82,8 +82,9 @@ const Player2 = function () {
   playerChange.textContent = 0;
 };
 
-const newGame = function () {// exp function
-  
+const newGame = function () {
+  // exp function
+
   dice.classList.add('hidden');
   score0.textContent = 0;
   score1.textContent = 0;
@@ -91,7 +92,8 @@ const newGame = function () {// exp function
   Current1.textContent = 0;
 };
 
-function fun() { // REGULAR 
+function fun() {
+  // REGULAR
   console.log('ok');
 }
 fun();

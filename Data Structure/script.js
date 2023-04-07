@@ -12,24 +12,72 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  // openingHours: {
-  //   thu: {
-  //     open: 12,
-  //     close: 22,
-  //   },
-  //   fri: {
-  //     open: 11,
-  //     close: 23,
-  //   },
-  //   sat: {
-  //     open: 0, // Open 24 hours
-  //     close: 24,
-  //   },
-  // },
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
   orderMenu: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+  // create object 
+   ordeDelivery: function({starterIndex,mainIndex,time,address}) // we also set default set the default value like time=12
+   {
+    console.log(`Order recived ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]}
+    
+    address is ${address}and time is  ${time}`);
+   }
 };
+//call object 
+  restaurant.ordeDelivery(
+    {
+      time:"12Am",
+      address:"dhaka",
+      mainIndex:2,
+      starterIndex:2,
+    }
+  );
+
+// obejct destructing
+
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+// also we use new name as a peramiter
+
+const {name:restuname}=restaurant;
+console.log(restuname);
+
+// set default value
+
+const {menu="joy",name:rename}=restaurant; // set meny = joy as a default  
+console.log(menu,rename);
+
+//mutating variable we use full code into ()
+
+let a=20;
+let b=23;
+const obj= {a:3,b:4};
+({a,b}=obj); // use ()
+console.log(a,b);
+
+// destruction nestend object
+
+const {fri:{open:o,close:c}}=openingHours;
+console.log(o,c);
+
+
+
+
 
 // let [main, , secondary] = restaurant.categories; // destructraing 1,3 element in using ,,
 // console.log(main, secondary); //
