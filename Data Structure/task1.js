@@ -80,3 +80,5 @@ printGoal(...game.scored);
 t1 < t2 && console.log('team1 win the game');
 t1 > t2 && console.log('team2 win the game');
 t1 == t2 && console.log('Draw win the game');
+
+
