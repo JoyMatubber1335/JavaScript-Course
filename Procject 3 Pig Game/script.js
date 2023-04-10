@@ -23,7 +23,20 @@ let Score = myScore;
 let scoreChange = score0;
 
 let playerChange = Current0;
+const chnagPlayer = function () {
+  currentValue = 0;
+  backColor0.classList.toggle('player--active');
+  backColor1.classList.toggle('player--active');
 
+  playerChange.textContent = 0;
+  if (playerChange === Current0) {
+    playerChange = Current1;
+    scoreChange = score1;
+  } else {
+    playerChange = Current0;
+    scoreChange = score0;
+  }
+};
 btnRoll.addEventListener('click', function () {
   // if we click roll
   const Num = Math.trunc(Math.random() * 6) + 1;
@@ -35,34 +48,28 @@ btnRoll.addEventListener('click', function () {
     currentValue += Num;
     playerChange.textContent = currentValue;
   } else {
-    currentValue = 0;
-    backColor1.classList.toggle('player--active');
-    backColor0.classList.toggle('player--active');
-    playerChange.textContent = 0;
-    if (playerChange === Current0) {
-      playerChange = Current1;
-      scoreChange = score1;
-    } else {
-      playerChange = Current0;
-      scoreChange = score0;
-    }
+    chnagPlayer();
   }
 });
 
 btnNew.addEventListener('click', function () {
   dice.classList.add('hidden');
-  currentValue = 0;
-  playerChange.textContent = 0;
-  scoreChange.textContent = 0;
+  score0.textContent = 0;
+  score1.textContent = 0;
+  Current0.textContent = 0;
+  Current1.textContent = 0;
   myScore = 0;
   yourScore = 0;
+  currentValue = 0;
+  scoreChange = score0;
+  playerChange = Current0;
 });
 
 const holdBtn = function () {
   if (playerChange === Current0) {
-    Player1();
-  } else {
     Player2();
+  } else {
+    Player1();
   }
   //   myScore = 0;
 };
@@ -74,22 +81,14 @@ const Player1 = function () {
   scoreChange.textContent = myScore;
   currentValue = 0;
   playerChange.textContent = 0;
+  chnagPlayer();
 };
 const Player2 = function () {
   yourScore += currentValue;
   scoreChange.textContent = yourScore;
   currentValue = 0;
   playerChange.textContent = 0;
-};
-
-const newGame = function () {
-  // exp function
-
-  dice.classList.add('hidden');
-  score0.textContent = 0;
-  score1.textContent = 0;
-  Current0.textContent = 0;
-  Current1.textContent = 0;
+  chnagPlayer();
 };
 
 function fun() {

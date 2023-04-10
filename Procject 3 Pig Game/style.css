@@ -64,7 +64,7 @@ main {
 }
 
 .player--active {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgb(10, 97, 18);
 }
 .player--active .name {
   font-weight: 700;
@@ -78,7 +78,7 @@ main {
 }
 
 .current {
-  background-color: #c7365f;
+  background-color: #c12323;
   opacity: 0.8;
   border-radius: 9px;
   color: #fff;
@@ -166,5 +166,5 @@ main {
   color: #c7365f;
 }
 .hidden {
-display: none;
+  display: none;
 }

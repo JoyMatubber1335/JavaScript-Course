@@ -55,3 +55,17 @@ const days = ['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri'];
 for (let day of days) {
   console.log(restaurant.openingHours?.[day]?.open ?? 'closed');
 }
+const openday = Object.keys(openingHours);
+console.log(openday);
+let openStr = `We are open on ${openday.length} days`;
+for (const day of Object.keys(openingHours)) {
+  openStr += ` ${day} `;
+}
+console.log(openStr);
+//Entries Object
+const entries = Object.entries(openingHours);
+console.log(entries);
+// devide value into open and close on entries
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} open at ${open} and close at ${close}`);
+}
