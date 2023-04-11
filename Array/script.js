@@ -65,43 +65,29 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const [i, val] of movements.entries()) {
+  if (val > 0) console.log(`Move ${i + 1} : Deposit amount is : ${val}`);
+  else console.log(`Move ${i + 1} : Withdraw amount is : ${Math.abs(val)}`);
+}
+// for each loop
+// break and continue dos't work
+console.log('///////for each/////');
+movements.forEach(function (val, index, arr) {
+  if (val > 0) console.log(`Move ${index + 1} : Deposit amount is : ${val}`);
+  else console.log(`Move ${index + 1} : Withdraw amount is : ${Math.abs(val)}`);
+});
+
+/////////////////////////////////////////////////
+
+// Map in for each
+
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
-/////////////////////////////////////////////////
-//Slice
-const arr = ['a', 'b', 'c', 'd', 'e'];
-console.log(arr.slice(2)); //c,d,e
-console.log(arr); //a,b,c,d,e
-console.log(arr.slice(2, 4));
-console.log(arr.slice(1, -1)); // slice every thing except last one
-
-//SPLICE
-console.log(arr);
-console.log(arr.splice(1, 3));
-console.log(arr);
-// console.log(arr.splice(2)); // c,d,e
-// console.log(arr); // a,b
-arr.splice(-1); // delete last index
-// console.log(arr);
-console.log(arr);
-
-//%%%%%%%%%%%REVERSE55544444$$$$$$$
-
-const arr1 = ['f', 'g', 'h', 'i', 'j'];
-const arr2 = ['k', 'l', 'm'];
-console.log(arr1.reverse(arr1));
-console.log(arr1); // chnage the orginal one
-// concate
-
-console.log(arr1.concat(arr2)); // dosent
-
-// join
-const later = arr1.concat(arr2);
-
-console.log(later.join('->'));
+currencies.forEach(function (value, key, fullmap) {
+  console.log(`${key} : ${value}`);
+});
