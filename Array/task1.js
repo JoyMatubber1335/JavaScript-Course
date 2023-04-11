@@ -15,9 +15,31 @@ const checkDogs = function (arrJuliya, arrKata) {
   console.log(allDogs);
   allDogs.forEach(function (value, key) {
     let type = value >= 3 ? 'Adult' : 'Still Puppy🐶';
-    console.log(`Doog Number is ${key+1} , ia an ${type} and age is ${value}`);
+    console.log(
+      `Doog Number is ${key + 1} , ia an ${type} and age is ${value}`
+    );
   });
 
   console.log(newarrayJuliya);
 };
 checkDogs(Juliya.dogAge, kata.dogAge);
+// task 2
+
+const Juliya2 = {
+  dogAge: [2, 3, 1, 4, 6],
+};
+
+const kata2 = {
+  dogAge: [1, 3, 2, 4, 5],
+};
+console.log('####### task 2 %%%%%%%');
+
+const calHumanAge = function (ages) {
+  const humanAge = ages.map(age => (age <= 2 ? age * 2 : 16 + age * 4));
+  const adultage = humanAge.filter(age => age >= 18);
+  const avgAge =
+    adultage.reduce((age, i) => age + i, humanAge[0]) / adultage.length;
+  console.log(avgAge);
+};
+calHumanAge(kata2.dogAge);
+calHumanAge(Juliya2.dogAge);

@@ -83,7 +83,6 @@ displayMovment(account1.movements);
 
 const createUserName = function (account) {
   account.forEach(function (acc) {
-    
     acc.userName = acc.owner
       .toLocaleLowerCase() //joy matubber
       .split(' ') // 'joy' 'matubber'
@@ -92,12 +91,26 @@ const createUserName = function (account) {
       )
       .join(''); //jm
   });
-
-  
 };
 // console.log('ok');
 createUserName(accounts);
 console.log(accounts);
+// use regular function
+// const balanceDisplay = function (movements) {
+//   console.log('ok');
+//   const balance = movements.reduce(function (sum, cur) {
+//     return (sum += cur);
+//   }, 0);
+//   labelBalance.textContent = `${balance} ERO`;
+// };
+// use arrow function
+const balanceDisplay = function (movements) {
+  console.log('ok');
+  const balance = movements.reduce((sum, cur) => sum + cur, 0);
+  labelBalance.textContent = `${balance} ERO`;
+};
+balanceDisplay(account1.movements);
+console.log('okok');
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
