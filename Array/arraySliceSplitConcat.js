@@ -1,12 +1,13 @@
 const arr = ['a', 'b', 'c', 'd', 'e'];
-console.log(arr.slice(2)); //c,d,e
-console.log(arr); //a,b,c,d,e
-console.log(arr.slice(2, 4));
-console.log(arr.slice(1, -1)); // slice every thing except last one
+// console.log(arr.slice(2)); //c,d,e
+// console.log(arr); //a,b,c,d,e
+// console.log(arr.slice(2, 4));
+// console.log(arr.slice(1, -1)); // slice every thing except last one
 
 //SPLICE
-console.log(arr);
-console.log(arr.splice(1, 3));
+console.log('splice');
+console.log(arr); //a b c d e
+console.log(arr.splice(1, 3));  //bcd
 console.log(arr);
 // console.log(arr.splice(2)); // c,d,e
 // console.log(arr); // a,b

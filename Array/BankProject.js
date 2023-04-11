@@ -79,6 +79,26 @@ const displayMovment = function () {
 };
 displayMovment(account1.movements);
 
+// const Name = 'Joy Matubber';
+
+const createUserName = function (account) {
+  account.forEach(function (acc) {
+    
+    acc.userName = acc.owner
+      .toLocaleLowerCase() //joy matubber
+      .split(' ') // 'joy' 'matubber'
+      .map(
+        name => name[0] //'j' 'm'
+      )
+      .join(''); //jm
+  });
+
+  
+};
+// console.log('ok');
+createUserName(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
