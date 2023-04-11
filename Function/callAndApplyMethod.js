@@ -43,4 +43,41 @@ runsOns();
   console.log('run never again');
 })();
 (() => console.log('not run again '))(); // arow function iife
- 
+
+//%%%%%%%%%%%%%%
+
+//Cluser
+
+const closer = function () {
+  let count = 0;
+  return function () {
+    count++;
+    console.log(`${count} number `);
+  };
+};
+const obj = closer();
+obj();
+obj();
+//example 1
+
+
+
+let f;
+const g = function () {
+  let a = 10;
+  f = function () {
+    console.log(`a = ${a}`);
+  };
+};
+
+const h = function () {
+  let b = 20;
+  f = function () {
+    console.log(`b = ${b}`);
+  };
+};
+g();
+f();
+h();
+f();
+
