@@ -9,7 +9,7 @@ console.log(undefined && 0); //print undefine
 console.log('joy' && 0 && undefined); // first get 0 ans =0;
 console.log('joy' && 'rana' && 'rakib'); // if both are truth value print last one
 //
-// handle nullish value : it convert 0 and '' vfalsy value to truty value
+// handle nullish value : it convert 0 and '' falsy value to truty value
 let v;
 let a = 0;
 console.log(v ?? 23); // undefine handle kore na so print undefine

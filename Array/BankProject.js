@@ -7,6 +7,12 @@
 // Data
 const euroToUsd = 1.1;
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const account0 = {
+  owner: 'Joy Matubber',
+  movements: [100, 350, -300, 2000, -550, -130, 170, 2300],
+  interestRate: 1.3, // %
+  pin: 1234,
+};
 
 const account1 = {
   owner: 'Jonas Schmedtmann',
@@ -36,7 +42,7 @@ const account4 = {
   pin: 4444,
 };
 
-const accounts = [account1, account2, account3, account4];
+const accounts = [account0, account1, account2, account3, account4];
 
 // Elements
 const labelWelcome = document.querySelector('.welcome');
@@ -64,7 +70,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovment = function () {
+const displayMovment = function (movements) {
   containerMovements.innerHTML = '';
   movements.forEach(function (move, i) {
     const type = move > 0 ? 'deposit' : 'withdrawal';
@@ -78,7 +84,7 @@ const displayMovment = function () {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovment(account1.movements);
+// displayMovment(account1.movements);
 
 // const Name = 'Joy Matubber';
 
@@ -110,32 +116,52 @@ const balanceDisplay = function (movements) {
   const balance = movements.reduce((sum, cur) => sum + cur, 0);
   labelBalance.textContent = `${balance} €`;
 };
-balanceDisplay(account1.movements);
-console.log('okok');
+// balanceDisplay(account1.movements);
 
-const displaySummery = function (movements) {
-  const dipo = movements
+const displaySummery = function (acc) {
+  const dipo = acc.movements
     .filter(mov => mov > 0)
     // .map(mov => mov * euroToUsd)
     .reduce((sum, mov) => sum + mov, 0);
 
   labelSumIn.textContent = `${dipo} €`;
-  const withdraw = movements
+  const withdraw = acc.movements
     .filter(mov => mov < 0)
     // .map(mov => mov * euroToUsd)
     .reduce((sum, mov) => sum + mov, 0);
 
   labelSumOut.textContent = `${Math.abs(withdraw)} €`;
-
-  const interset = movements
+  let intRate = acc.interestRate;
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(mov => (mov * 1.2) / 100)
+    .map(mov => (mov * intRate) / 100)
     .filter((mov, i, arr) => mov >= 1)
     .reduce((sum, mov) => sum + mov, 0);
-  labelSumInterest.textContent = `${interset} €`;
+  labelSumInterest.textContent = `${interest} €`;
 };
-displaySummery(account1.movements);
+// displaySummery(account1.movements);
 
+// log in feature
+
+let currentAccount;
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault(); // reload hoa off kore karon amra jokhn submit button e click kroi page ta reload hoy
+  currentAccount = accounts.find(
+    acc => acc.userName === inputLoginUsername.value
+  );
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    labelWelcome.textContent = `Wlcome Back ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputClosePin.blur();
+    displayMovment(currentAccount.movements); // display Movment
+    balanceDisplay(currentAccount.movements); // display login account balance
+    displaySummery(currentAccount); // display in out intrese all value
+  }
+  console.log(currentAccount.userName);
+});
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
