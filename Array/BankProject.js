@@ -5,6 +5,7 @@
 // BANKIST APP
 
 // Data
+const euroToUsd = 1.1;
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const account1 = {
@@ -107,10 +108,33 @@ console.log(accounts);
 const balanceDisplay = function (movements) {
   console.log('ok');
   const balance = movements.reduce((sum, cur) => sum + cur, 0);
-  labelBalance.textContent = `${balance} ERO`;
+  labelBalance.textContent = `${balance} €`;
 };
 balanceDisplay(account1.movements);
 console.log('okok');
+
+const displaySummery = function (movements) {
+  const dipo = movements
+    .filter(mov => mov > 0)
+    // .map(mov => mov * euroToUsd)
+    .reduce((sum, mov) => sum + mov, 0);
+
+  labelSumIn.textContent = `${dipo} €`;
+  const withdraw = movements
+    .filter(mov => mov < 0)
+    // .map(mov => mov * euroToUsd)
+    .reduce((sum, mov) => sum + mov, 0);
+
+  labelSumOut.textContent = `${Math.abs(withdraw)} €`;
+
+  const interset = movements
+    .filter(mov => mov > 0)
+    .map(mov => (mov * 1.2) / 100)
+    .filter((mov, i, arr) => mov >= 1)
+    .reduce((sum, mov) => sum + mov, 0);
+  labelSumInterest.textContent = `${interset} €`;
+};
+displaySummery(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
