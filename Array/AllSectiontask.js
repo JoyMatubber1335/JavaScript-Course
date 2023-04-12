@@ -43,3 +43,15 @@ const calHumanAge = function (ages) {
 };
 calHumanAge(kata2.dogAge);
 calHumanAge(Juliya2.dogAge);
+
+console.log('#### TASK 3 ##########');
+
+const calvgHumanAge = function (ages) {
+  const avgage = ages
+    .map(age => (age <= 2 ? age * 2 : 16 + age * 4))
+    .filter(age => age >= 18)
+    .reduce((sum, age, i, arr) => sum + age / arr.length, 0);
+  console.log(avgage);
+};
+calvgHumanAge([4, 2, 5, 1, 15, 8, 3]);
+calvgHumanAge(Juliya2.dogAge);
