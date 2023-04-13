@@ -190,9 +190,28 @@ btnTransfer.addEventListener('click', function (e) {
 
     // update UI
     UpdateUI(currentAccount);
-    
   }
   inputTransferTo.value = inputTransferAmount.value = '';
+});
+
+// ddelete account
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (
+    inputCloseUsername.value === currentAccount.userName &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      // kon account delet korbo khuje ber korbe
+      acc => acc.userName === currentAccount.userName
+    );
+    console.log(index);
+    accounts.splice(index, 1); // delete one time
+    containerApp.style.opacity = 0; //account delete kore dile information show korbe na
+  }
+  inputCloseUsername.value = inputClosePin.value = ''; // set this positin is emplty
+  // console.log('delete');
 });
 
 /////////////////////////////////////////////////
