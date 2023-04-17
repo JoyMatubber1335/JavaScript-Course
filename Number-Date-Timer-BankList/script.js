@@ -109,6 +109,7 @@ containerMovements.innerHTML = '';
 // containerMovements.insertAdjacentHTML('afterbegin', html);
 // });
 // };
+let currentAccount, timer;
 
 const formatMovementDate = function (date) {
   const calcDaysPassed = (date1, date2) =>
@@ -144,24 +145,6 @@ const currentDate = function () {
   labelDate.textContent = `${day}/${month}/${year}, ${hr}:${min}`;
 };
 
-// const DisplayDate = function (Nowdate) {
-// const Nowdate = new Date();
-//
-// const caldatePassed = (date1, date2) =>
-// Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
-// let datePassed = caldatePassed(new Date(), Nowdate);
-//
-// if (datePassed === 0) return 'Today';
-// if (datePassed === 0) return 'Yesterday';
-// if (datePassed <= 7) return `${datePassed} days ago`;
-// else {
-// const year = ` ${Nowdate.getFullYear()}`;
-// const month = `${Nowdate.getMonth()}`.padStart(2, 0);
-// const day = `${Nowdate.getDate()}`.padStart(2, 0);
-// return `${day}/${month}/${year}`;
-// }
-// };
-//
 const displayMovment = function (acc, sort = false) {
   containerMovements.innerHTML = '';
   const movs = sort
@@ -210,6 +193,29 @@ const UpdateUI = function (acc) {
   balanceDisplay(acc); // display login account balance
   displaySummery(acc); // display in
 };
+const startLogoutTimer = function () {
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(Math.trunc(time % 60)).padStart(2, 0);
+    labelTimer.textContent = `${min}:${sec}`;
+    // decrese 1 sec
+
+    //when 0 sec ,stop timer and log out user
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started';
+
+      containerApp.style.opacity = 0;
+    }
+    time--;
+  };
+  //set the time 5 miniut
+  let time = 120;
+  //cal timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
 
 // use regular function
 // const balanceDisplay = function (movements) {
@@ -257,7 +263,6 @@ const displaySummery = function (acc) {
 
 // log in feature
 
-let currentAccount;
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault(); // reload hoa off kore karon amra jokhn submit button e click kroi page ta reload hoy
   currentAccount = accounts.find(
@@ -270,6 +275,11 @@ btnLogin.addEventListener('click', function (e) {
     containerApp.style.opacity = 100;
     inputLoginUsername.value = inputLoginPin.value = '';
     inputClosePin.blur();
+    // timer
+    if (timer) clearInterval(timer);
+
+    timer = startLogoutTimer();
+
     UpdateUI(currentAccount);
     currentDate();
     // displayMovment(currentAccount.movements); // display Movment
@@ -300,9 +310,13 @@ btnTransfer.addEventListener('click', function (e) {
     currentAccount.movementsDates.push(new Date());
     recevAccount.movementsDates.push(new Date());
 
+    clearInterval(timer);
+    timer = startLogoutTimer();
     // update UI
     UpdateUI(currentAccount);
     DisplayDate();
+
+    // reset timer
   }
   inputTransferTo.value = inputTransferAmount.value = '';
 });
@@ -330,11 +344,13 @@ btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Math.floor(inputLoanAmount.value);
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    currentAccount.movements.push(amount);
-    currentAccount.movementsDates.push(new Date());
+    setTimeout(function () {
+      currentAccount.movements.push(amount);
+      currentAccount.movementsDates.push(new Date());
 
-    UpdateUI(currentAccount);
-    currentDate();
+      UpdateUI(currentAccount);
+      currentDate();
+    }, 2500);
   }
   inputLoanAmount.value = '';
 });
@@ -484,3 +500,10 @@ console.log(Number.parseFloat(y));
 
 const evenodd = n => (n % 2 ? 'odd' : 'even');
 console.log(evenodd(6));
+
+// set Interval
+
+setInterval(function () {
+  const now = new Date();
+  console.log(now);
+}, 1000);
