@@ -280,7 +280,7 @@ let sort = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
 
-  displayMovment(currentAccount.movements, !sort);
+  displayMovment(currentAccount, !sort);
   sort = !sort;
 });
 
@@ -361,18 +361,17 @@ console.log(Dipo, Withd);
 // console.log(titletext('my name is a JOY i was passed bsc '));
 //
 const convertTitleCase = function (title) {
-const capitzalize = str => str[0].toUpperCase() + str.slice(1);
-// 
-const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
-// 
-const titleCase = title
-.toLowerCase()
-.split(' ')
-.map(word => (exceptions.includes(word) ? word : capitzalize(word)))
-.join(' ');
-// 
-return capitzalize(titleCase);
+  const capitzalize = str => str[0].toUpperCase() + str.slice(1);
+  //
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+  //
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word => (exceptions.includes(word) ? word : capitzalize(word)))
+    .join(' ');
+  //
+  return capitzalize(titleCase);
 };
-// 
+//
 console.log(convertTitleCase('this is a nice title'));
-
